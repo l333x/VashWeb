@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Dashboard</title>
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+    <!-- Header con información del admin y botón de cerrar sesión -->
+    <header class="admin-header">
+        <div class="header-content">
+            <h1 class="admin-title">PANEL DE ADMINISTRACIÓN</h1>
+            <div class="admin-info">
+                <span id="adminWelcome">Bienvenido, Admin</span>
+                <button id="logoutButton" class="logout-btn" title="Cerrar Sesión">
+                    🚪
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor principal del dashboard -->
+    <main class="dashboard-container">
+        <!-- Título de secciones principales -->
+        <h2 class="sections-title">SECCIONES PRINCIPALES</h2>
+        
+        <!-- Grid de botones principales -->
+        <div class="main-buttons-grid">
+            <!-- Botón para Repositorios -->
+            <div class="module-card">
+                <div class="card-icon">📁</div>
+                <h3 class="card-title">REPOSITORIOS</h3>
+                <p class="card-description">Accede a todos los repositoriosde código y documentación</p>
+                <button id="repositoriosBtn" class="module-btn">
+                    <span>ABRIR REPOSITORIOS</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+            
+            <!-- Botón para Videos -->
+            <div class="module-card">
+                <div class="card-icon">🎥</div>
+                <h3 class="card-title">VIDEOS</h3>
+                <p class="card-description">Biblioteca de videos educativos y tutoriales</p>
+                <button id="videosBtn" class="module-btn">
+                    <span>ABRIR VIDEOS</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+            
+            <!-- Botón adicional para futuras expansiones -->
+            <div class="module-card">
+                <div class="card-icon">⚙️</div>
+                <h3 class="card-title">CONFIGURACIÓN</h3>
+                <p class="card-description">Ajustes del sistema y configuraciones</p>
+                <button id="configBtn" class="module-btn" disabled>
+                    <span>PRÓXIMAMENTE</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+            
+            <!-- Botón adicional para estadísticas -->
+            <div class="module-card">
+                <div class="card-icon">📊</div>
+                <h3 class="card-title">ESTADÍSTICAS</h3>
+                <p class="card-description">Métricas y análisis del sistema</p>
+                <button id="statsBtn" class="module-btn" disabled>
+                    <span>PRÓXIMAMENTE</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Información de sesión -->
+        <div class="session-info">
+            <p>Sesión iniciada: <span id="sessionTime"></span></p>
+            <p>Estado: <span class="status-active">ACTIVO</span></p>
+        </div>
+    </main>
+
+    <!-- Footer con información adicional -->
+    <footer class="admin-footer">
+        <p>&copy; 2025 Sistema de Administración - Versión 1.0</p>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="js/inicio.js"></script>
+</body>
+</html>

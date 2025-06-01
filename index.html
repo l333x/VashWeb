@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Administración - Login</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- Contenedor principal del login -->
+    <div class="login-container">
+        <!-- Título principal con efectos neon -->
+        <h1 class="login-title">ACCESO ADMINISTRATIVO</h1>
+        
+        <!-- Formulario de login -->
+        <form id="loginForm" class="login-form">
+            <!-- Campo de usuario -->
+            <div class="input-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <!-- Campo de contraseña con botón para mostrar/ocultar -->
+            <div class="input-group">
+                <label for="password">Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" id="togglePassword" class="toggle-password-btn">👁️</button>
+                </div>
+            </div>
+            
+            <!-- Botón de login con efectos neon -->
+            <button type="submit" class="login-btn">INGRESAR</button>
+        </form>
+        
+        <!-- Mensaje de error (oculto por defecto) -->
+        <div id="errorMessage" class="error-message">
+            <div class="spinning-icon">⚠️</div>
+            <p>NO ERES ADMIN GRACIAS</p>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script src="js/index.js"></script>
+</body>
+</html>
