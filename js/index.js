@@ -1,278 +1,157 @@
+// Configuración de credenciales de administrador
+const ADMIN_CREDENTIALS = {
+    username: "vash01",
+    password: "v@sh@dmin"
+};
+
 // Elementos del DOM que necesitamos manipular
-const logoutButton = document.getElementById("logoutButton");
-const repositoriosBtn = document.getElementById("repositoriosBtn");
-const videosBtn = document.getElementById("videosBtn");
-const configBtn = document.getElementById("configBtn");
-const statsBtn = document.getElementById("statsBtn");
-const adminWelcome = document.getElementById("adminWelcome");
-const sessionTime = document.getElementById("sessionTime");
+const loginForm = document.getElementById("loginForm");
+const errorMessage = document.getElementById("errorMessage");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const togglePasswordBtn = document.getElementById("togglePassword");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const smokyText = document.getElementById("smokyText");
-    const smokeEffect = document.getElementById("smokeEffect");
-    const dashboard = document.getElementById("dashboardContent");
+// Función para mostrar/ocultar contraseña
+function togglePasswordVisibility() {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    
+    // Cambiar el icono del botón
+    togglePasswordBtn.textContent = type === 'password' ? '🙈' : '🙊';
+}
 
-    // Texto personalizado smoky
-    const mensaje = "BIENVENIDO VASH";
+// Event listener para el botón de mostrar/ocultar contraseña
+togglePasswordBtn.addEventListener("click", togglePasswordVisibility);
 
-    // Limpiar y construir texto con animaciones
-    mensaje.split('').forEach((letra, i) => {
-        const span = document.createElement('span');
-        span.textContent = letra;
-        span.style.animationDelay = `${3 + i * 0.1}s`;
-        smokyText.appendChild(span);
-    });
-
-    // Mostrar dashboard después del efecto smoky (≈8s)
-    setTimeout(() => {
-        smokeEffect.style.display = "none";
-        dashboard.style.display = "block";
-    }, 8000);
+// Event listener para el envío del formulario
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevenir el envío normal del formulario
+    
+    // Obtener los valores ingresados por el usuario
+    const enteredUsername = usernameInput.value.trim();
+    const enteredPassword = passwordInput.value;
+    
+    // Validar las credenciales ingresadas
+    validateCredentials(enteredUsername, enteredPassword);
 });
 
-// Verificar autenticación al cargar la página
-function checkAuthentication() {
+// Función principal para validar credenciales
+function validateCredentials(username, password) {
+    console.log("Validando credenciales:", username, password); // Debug
+    
+    // Ocultar mensaje de error si estaba visible
+    hideErrorMessage();
+    
+    // Verificar si las credenciales coinciden con las del administrador
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        console.log("Credenciales correctas"); // Debug
+        // Si las credenciales son correctas, proceder con login de admin
+        handleAdminLogin();
+    } else {
+        console.log("Credenciales incorrectas"); // Debug
+        // Si las credenciales son incorrectas, mostrar mensaje de error
+        handleInvalidLogin();
+    }
+}
+
+// Función para manejar login exitoso de administrador
+function handleAdminLogin() {
+    console.log("Login exitoso - Redirigiendo a inicio.html"); // Debug
+    
+    // Guardar información de sesión en sessionStorage
+    sessionStorage.setItem("isAdmin", "true");
+    sessionStorage.setItem("username", ADMIN_CREDENTIALS.username);
+    sessionStorage.setItem("loginTime", new Date().toISOString());
+    
+    // Mostrar efecto de carga antes de redirigir
+    showLoadingEffect();
+    
+    // Redirigir a la página de inicio después de un breve delay
+    setTimeout(() => {
+        window.location.href = "inicio.html";
+    }, 1500);
+}
+
+// Función para manejar login inválido
+function handleInvalidLogin() {
+    console.log("Credenciales incorrectas"); // Debug
+    
+    // Mostrar mensaje de error con animación
+    showErrorMessage();
+    
+    // Limpiar los campos del formulario
+    clearFormFields();
+    
+    // Auto-ocultar el mensaje de error después de 5 segundos
+    setTimeout(hideErrorMessage, 5000);
+}
+
+// Función para mostrar mensaje de error
+function showErrorMessage() {
+    errorMessage.style.display = "block";
+    errorMessage.style.animation = "errorShake 0.5s ease-in-out";
+}
+
+// Función para ocultar mensaje de error
+function hideErrorMessage() {
+    errorMessage.style.display = "none";
+}
+
+// Función para limpiar los campos del formulario
+function clearFormFields() {
+    usernameInput.value = "";
+    passwordInput.value = "";
+    usernameInput.focus(); // Enfocar el campo de usuario
+}
+
+// Función para mostrar efecto de carga durante login exitoso
+function showLoadingEffect() {
+    const loginBtn = document.querySelector(".login-btn");
+    const originalText = loginBtn.textContent;
+    
+    // Cambiar texto del botón y añadir animación
+    loginBtn.textContent = "ACCEDIENDO...";
+    loginBtn.style.animation = "pulseGlow 0.5s ease-in-out infinite alternate";
+    loginBtn.disabled = true;
+    
+    // Restaurar estado original después del delay
+    setTimeout(() => {
+        loginBtn.textContent = originalText;
+        loginBtn.disabled = false;
+    }, 1500);
+}
+
+// Función para manejar el evento de tecla Enter en los campos
+function handleEnterKey(event) {
+    if (event.key === "Enter") {
+        loginForm.dispatchEvent(new Event("submit"));
+    }
+}
+
+// Agregar event listeners para tecla Enter en los campos
+usernameInput.addEventListener("keypress", handleEnterKey);
+passwordInput.addEventListener("keypress", handleEnterKey);
+
+// Función para verificar si ya hay una sesión activa al cargar la página
+function checkExistingSession() {
     const isAdmin = sessionStorage.getItem("isAdmin");
-    const username = sessionStorage.getItem("username");
     
-    // Si no hay sesión de admin, redirigir al login
-    if (isAdmin !== "true" || !username) {
-        alert("Acceso no autorizado. Redirigiendo al login...");
-        window.location.href = "index.html";
-        return false;
-    }
-    
-    return true;
-}
-
-// Inicializar información de usuario y sesión
-function initializeUserInfo() {
-    const username = sessionStorage.getItem("username");
-    const loginTime = sessionStorage.getItem("loginTime");
-    
-    // Actualizar mensaje de bienvenida
-    if (username) {
-        adminWelcome.textContent = `Bienvenido, ${username}`;
-    }
-    
-    // Mostrar tiempo de inicio de sesión
-    if (loginTime) {
-        const loginDate = new Date(loginTime);
-        const formattedTime = loginDate.toLocaleString('es-ES', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        sessionTime.textContent = formattedTime;
+    // Si ya hay una sesión de admin activa, redirigir automáticamente
+    if (isAdmin === "true") {
+        window.location.href = "inicio.html";
     }
 }
 
-// Función para cerrar sesión
-function handleLogout() {
-    // Confirmar antes de cerrar sesión
-    const confirmLogout = confirm("¿Estás seguro de que deseas cerrar sesión?");
-    
-    if (confirmLogout) {
-        // Mostrar efecto de cierre de sesión
-        showLogoutEffect();
-        
-        // Limpiar datos de sesión después del efecto
-        setTimeout(() => {
-            sessionStorage.clear(); // Limpia todos los datos de la sesión
-            window.location.href = "index.html"; // Redirige al login
-        }, 1000);
-    }
+// Verificar sesión existente cuando se carga la página
+document.addEventListener("DOMContentLoaded", checkExistingSession);
+
+// Función para limpiar la sesión (útil para debugging)
+function clearSession() {
+    sessionStorage.clear();
+    console.log("Sesión limpiada");
 }
 
-// Efecto visual para el cierre de sesión
-function showLogoutEffect() {
-    const logoutBtn = document.getElementById("logoutButton");
-    
-    // Cambiar estilo del botón temporalmente
-    logoutBtn.style.transform = "scale(0.8) rotate(180deg)";
-    logoutBtn.style.background = "linear-gradient(45deg, #ff6b6b, #ff8e8e)";
-    
-    // Mostrar mensaje de despedida
-    const farewell = document.createElement("div");
-    farewell.textContent = "Cerrando sesión...";
-    farewell.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 0, 64, 0.9);
-        color: white;
-        padding: 20px 40px;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        z-index: 1000;
-        box-shadow: 0 0 30px var(--color-primario);
-    `;
-    
-    document.body.appendChild(farewell);
-    
-    // Remover mensaje después del efecto
-    setTimeout(() => {
-        if (farewell.parentNode) {
-            farewell.parentNode.removeChild(farewell);
-        }
-    }, 900);
-}
-
-// FUNCIONES DE NAVEGACIÓN ACTUALIZADAS (SIN SIMULACIONES)
-function handleRepositoriosClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("📁", event);
-    }
-    
-    // Navegar directamente
-    setTimeout(() => {
-        window.location.href = 'repositorios.html';
-    }, 300);
-}
-
-function handleVideosClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("🎥", event);
-    }
-    
-    // Navegar directamente
-    setTimeout(() => {
-        window.location.href = 'videos.html';
-    }, 300);
-}
-
-function handleConfigClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("⚙️", event);
-    }
-    
-    // Navegar directamente
-    setTimeout(() => {
-        window.location.href = 'config.html';
-    }, 300);
-}
-
-// Función para manejar botones deshabilitados (solo para Stats)
-function handleDisabledClick(buttonName) {
-    alert(`La función de ${buttonName} estará disponible en futuras versiones.`);
-}
-
-// Event listeners para todos los botones
-function setupEventListeners() {
-    // Botón de cerrar sesión
-    logoutButton.addEventListener("click", handleLogout);
-    
-    // Botones de navegación principal (ACTIVOS)
-    repositoriosBtn.addEventListener("click", handleRepositoriosClick);
-    videosBtn.addEventListener("click", handleVideosClick);
-    configBtn.addEventListener("click", handleConfigClick);
-    
-    // Botón deshabilitado (solo estadísticas)
-    statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
-    
-    // Event listener para prevenir cierre accidental de la ventana
-    window.addEventListener("beforeunload", function(event) {
-        event.preventDefault();
-        event.returnValue = "¿Estás seguro de que deseas salir? Se cerrará tu sesión.";
-    });
-}
-
-// Función para actualizar el tiempo de sesión en tiempo real
-function updateSessionTimer() {
-    const loginTime = sessionStorage.getItem("loginTime");
-    
-    if (loginTime) {
-        const startTime = new Date(loginTime);
-        const currentTime = new Date();
-        const timeDiff = Math.floor((currentTime - startTime) / 1000); // en segundos
-        
-        const hours = Math.floor(timeDiff / 3600);
-        const minutes = Math.floor((timeDiff % 3600) / 60);
-        const seconds = timeDiff % 60;
-        
-        // Crear elemento para mostrar duración de sesión si no existe
-        let sessionDuration = document.getElementById("sessionDuration");
-        if (!sessionDuration) {
-            sessionDuration = document.createElement("p");
-            sessionDuration.id = "sessionDuration";
-            const sessionInfo = document.querySelector(".session-info");
-            if (sessionInfo) {
-                sessionInfo.appendChild(sessionDuration);
-            }
-        }
-        
-        sessionDuration.innerHTML = `Duración de sesión: <span class="status-active">${hours}h ${minutes}m ${seconds}s</span>`;
-    }
-}
-
-// Función para verificar la validez de la sesión periódicamente
-function sessionHealthCheck() {
-    const isAdmin = sessionStorage.getItem("isAdmin");
-    const loginTime = sessionStorage.getItem("loginTime");
-    
-    // Verificar si la sesión es válida
-    if (isAdmin !== "true" || !loginTime) {
-        alert("Sesión expirada o inválida. Redirigiendo al login...");
-        sessionStorage.clear();
-        window.location.href = "index.html";
-        return;
-    }
-    
-    // Verificar si la sesión ha durado más de 8 horas (opcional)
-    const startTime = new Date(loginTime);
-    const currentTime = new Date();
-    const hoursPassed = (currentTime - startTime) / (1000 * 60 * 60);
-    
-    if (hoursPassed > 8) {
-        const extendSession = confirm("Tu sesión ha durado más de 8 horas. ¿Deseas extenderla?");
-        if (extendSession) {
-            sessionStorage.setItem("loginTime", new Date().toISOString());
-        } else {
-            handleLogout();
-        }
-    }
-}
-
-// Función principal de inicialización
-function initializeDashboard() {
-    // Verificar autenticación
-    if (!checkAuthentication()) {
-        return;
-    }
-    
-    // Inicializar información del usuario
-    initializeUserInfo();
-    
-    // Configurar event listeners
-    setupEventListeners();
-    
-    // Iniciar timer de sesión
-    setInterval(updateSessionTimer, 1000);
-    
-    // Verificar salud de la sesión cada 5 minutos
-    setInterval(sessionHealthCheck, 5 * 60 * 1000);
-    
-    console.log("Dashboard inicializado correctamente");
-}
-
-// Inicializar cuando el DOM esté cargado
-document.addEventListener("DOMContentLoaded", initializeDashboard);
-
-// Función de utilidad para debugging (remover en producción)
-function debugInfo() {
-    console.log("=== DEBUG INFO ===");
-    console.log("isAdmin:", sessionStorage.getItem("isAdmin"));
-    console.log("username:", sessionStorage.getItem("username"));
-    console.log("loginTime:", sessionStorage.getItem("loginTime"));
-    console.log("==================");
-}
-
-// Exponer función de debug al objeto window para acceso desde consola
-window.debugInfo = debugInfo;
+// Efecto visual adicional: enfocar automáticamente el campo de usuario
+document.addEventListener("DOMContentLoaded", function() {
+    usernameInput.focus();
+});
