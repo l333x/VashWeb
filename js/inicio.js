@@ -130,7 +130,7 @@ function handleRepositoriosClick() {
     // Simular navegación (aquí conectarás con repositorios.html)
     setTimeout(() => {
         // window.location.href = "repositorios.html";
-        alert("Función de repositorios será implementada próximamente");
+        //alert("Función de repositorios será implementada próximamente");
     }, 1500);
 }
 
@@ -142,7 +142,7 @@ function handleVideosClick() {
     // Simular navegación (aquí conectarás con videos.html)
     setTimeout(() => {
         // window.location.href = "videos.html";
-        alert("Función de videos será implementada próximamente");
+        //alert("Función de videos será implementada próximamente");
     }, 1500);
 }
 
@@ -190,7 +190,7 @@ function setupEventListeners() {
     
     // Botones deshabilitados
     //configBtn.addEventListener("click", () => handleDisabledClick("Configuración"));
-    statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
+    //statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
     
     // Event listener para prevenir cierre accidental de la ventana
     window.addEventListener("beforeunload", function(event) {
