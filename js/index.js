@@ -17,7 +17,7 @@ function togglePasswordVisibility() {
     passwordInput.setAttribute('type', type);
     
     // Cambiar el icono del botón
-    togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+    togglePasswordBtn.textContent = type === 'password' ? '🙈' : '🙊';
 }
 
 // Event listener para el botón de mostrar/ocultar contraseña
