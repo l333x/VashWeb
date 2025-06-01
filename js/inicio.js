@@ -122,44 +122,59 @@ function showLogoutEffect() {
     }, 900);
 }
 
-// FUNCIONES DE NAVEGACIÓN ACTUALIZADAS (SIN SIMULACIONES)
-function handleRepositoriosClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("📁", event);
-    }
+// Función para manejar navegación a repositorios
+function handleRepositoriosClick() {
+    // Mostrar efecto de carga
+    showNavigationEffect(repositoriosBtn, "Cargando repositorios...");
     
-    // Navegar directamente
+    // Simular navegación (aquí conectarás con repositorios.html)
     setTimeout(() => {
-        window.location.href = 'repositorios.html';
-    }, 300);
+        // window.location.href = "repositorios.html";
+        alert("Función de repositorios será implementada próximamente");
+    }, 1500);
 }
 
-function handleVideosClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("🎥", event);
-    }
+// Función para manejar navegación a videos
+function handleVideosClick() {
+    // Mostrar efecto de carga
+    showNavigationEffect(videosBtn, "Cargando videos...");
     
-    // Navegar directamente
+    // Simular navegación (aquí conectarás con videos.html)
     setTimeout(() => {
-        window.location.href = 'videos.html';
-    }, 300);
+        // window.location.href = "videos.html";
+        alert("Función de videos será implementada próximamente");
+    }, 1500);
 }
 
-function handleConfigClick(event) {
-    // Mostrar emoji de click si tienes emojis.js
-    if (typeof showClickEmoji === 'function') {
-        showClickEmoji("⚙️", event);
-    }
+// Efecto visual para navegación entre módulos
+function showNavigationEffect(button, message) {
+    const originalText = button.querySelector("span").textContent;
     
-    // Navegar directamente
+    // Cambiar texto y estilo del botón
+    button.querySelector("span").textContent = message;
+    button.style.transform = "scale(0.95)";
+    button.disabled = true;
+    
+    // Crear indicador de carga
+    const loader = document.createElement("div");
+    loader.textContent = "⚡";
+    loader.style.cssText = `
+        display: inline-block;
+        margin-left: 10px;
+        animation: spin 1s linear infinite;
+    `;
+    
+    button.querySelector("span").appendChild(loader);
+    
+    // Restaurar estado original después del efecto
     setTimeout(() => {
-        window.location.href = 'config.html';
-    }, 300);
+        button.querySelector("span").textContent = originalText;
+        button.style.transform = "scale(1)";
+        button.disabled = false;
+    }, 1500);
 }
 
-// Función para manejar botones deshabilitados (solo para Stats)
+// Función para manejar botones deshabilitados
 function handleDisabledClick(buttonName) {
     alert(`La función de ${buttonName} estará disponible en futuras versiones.`);
 }
@@ -169,12 +184,12 @@ function setupEventListeners() {
     // Botón de cerrar sesión
     logoutButton.addEventListener("click", handleLogout);
     
-    // Botones de navegación principal (ACTIVOS)
+    // Botones de navegación principal
     repositoriosBtn.addEventListener("click", handleRepositoriosClick);
     videosBtn.addEventListener("click", handleVideosClick);
-    configBtn.addEventListener("click", handleConfigClick);
     
-    // Botón deshabilitado (solo estadísticas)
+    // Botones deshabilitados
+    //configBtn.addEventListener("click", () => handleDisabledClick("Configuración"));
     statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
     
     // Event listener para prevenir cierre accidental de la ventana
@@ -202,10 +217,7 @@ function updateSessionTimer() {
         if (!sessionDuration) {
             sessionDuration = document.createElement("p");
             sessionDuration.id = "sessionDuration";
-            const sessionInfo = document.querySelector(".session-info");
-            if (sessionInfo) {
-                sessionInfo.appendChild(sessionDuration);
-            }
+            document.querySelector(".session-info").appendChild(sessionDuration);
         }
         
         sessionDuration.innerHTML = `Duración de sesión: <span class="status-active">${hours}h ${minutes}m ${seconds}s</span>`;
@@ -276,3 +288,23 @@ function debugInfo() {
 
 // Exponer función de debug al objeto window para acceso desde consola
 window.debugInfo = debugInfo;
+
+// ============ VERSIÓN SIMPLE - AGREGAR AL FINAL DE inicio.js ============
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Navegación directa para repositorios
+    document.getElementById('repositoriosBtn').addEventListener('click', function() {
+        window.location.href = 'repositorios.html';
+    });
+    
+    // Navegación directa para videos
+    document.getElementById('videosBtn').addEventListener('click', function() {
+        window.location.href = 'videos.html';
+    });
+    
+    // Para configuración (cuando esté listo)
+    document.getElementById('configBtn').addEventListener('click', function() {
+    window.location.href = 'config.html';
+     });
+});
