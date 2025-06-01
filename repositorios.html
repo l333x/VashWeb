@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videos - Panel Administrativo</title>
-    <link rel="stylesheet" href="css/videos.css">
+    <title>Repositorios - Panel Administrativo</title>
+    <link rel="stylesheet" href="css/repositorios.css">
 </head>
 <body>
-    <body>
-  <div id="floating-emojis"></div>
+    <div id="floating-emojis"></div>
     <!-- Efecto de fondo animado -->
     <div class="background-effect"></div>
     
     <!-- Header con botón de regreso -->
-    <header class="video-header">
+    <header class="repo-header">
         <div class="header-content">
             <button class="home-btn" onclick="goHome()" title="Volver al inicio">
                 🏠
             </button>
-            <h1 class="page-title">🎥 BIBLIOTECA DE VIDEOS</h1>
+            <h1 class="page-title">📁 REPOSITORIOS DE CÓDIGO</h1>
             <div class="user-info">
                 <span>Bienvenido, vash01</span>
             </div>
@@ -28,137 +27,121 @@
     <!-- Contenedor principal -->
     <main class="main-container">
         
-        <!-- ============ PLANTILLA DE SECCIÓN - TUTORIALES DE PROGRAMACIÓN ============ -->
-        <!-- Para agregar más secciones, copia desde aquí hasta el comentario de cierre -->
-        <div class="video-section">
-            <div class="section-header" onclick="toggleSection('programming-section')">
-                <div class="header-left">
-                    <span class="folder-icon">📁</span>
-                    <h2 class="section-title">Tutoriales de Programación</h2>
-                    <span class="video-count">(2 videos)</span>
-                </div>
-                <span class="toggle-arrow" id="programming-arrow">▼</span>
-            </div>
-            
-            <div class="section-content" id="programming-section">
-                <!-- VIDEO 1 - Plantilla de video -->
-                <div class="video-item">
-                    <div class="video-info">
-                        <span class="video-icon">💻</span>
-                        <div class="video-details">
-                            <h3 class="video-title">JavaScript Básico - Curso Completo</h3>
-                            <p class="video-description">Tutorial completo para aprender JavaScript desde cero</p>
-                            <span class="video-link">https://www.youtube.com/watch?v=ejemplo1</span>
-                            <div class="video-stats">
-                                <span class="duration">⏱️ 2:30:45</span>
-                                <span class="views">👁️ 125K views</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="watch-btn" onclick="openVideo('https://www.youtube.com/watch?v=ejemplo1')">
-                        Ver Video 🎬
-                    </button>
-                </div>
-
-                <!-- VIDEO 2 - Plantilla de video -->
-                <div class="video-item">
-                    <div class="video-info">
-                        <span class="video-icon">🐍</span>
-                        <div class="video-details">
-                            <h3 class="video-title">Python para Principiantes</h3>
-                            <p class="video-description">Fundamentos de Python explicados de manera sencilla</p>
-                            <span class="video-link">https://www.youtube.com/watch?v=ejemplo2</span>
-                            <div class="video-stats">
-                                <span class="duration">⏱️ 1:45:20</span>
-                                <span class="views">👁️ 89K views</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="watch-btn" onclick="openVideo('https://www.youtube.com/watch?v=ejemplo2')">
-                        Ver Video 🎬
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- ============ FIN PLANTILLA SECCIÓN PROGRAMACIÓN ============ -->
-
         <!-- ============ PLANTILLA DE SECCIÓN - INTELIGENCIA ARTIFICIAL ============ -->
         <!-- Para agregar más secciones, copia desde aquí hasta el comentario de cierre -->
-        <div class="video-section">
+        <div class="repo-section">
             <div class="section-header" onclick="toggleSection('ai-section')">
                 <div class="header-left">
                     <span class="folder-icon">📁</span>
                     <h2 class="section-title">Inteligencia Artificial</h2>
-                    <span class="video-count">(2 videos)</span>
+                    <span class="url-count">(2 recursos)</span>
                 </div>
                 <span class="toggle-arrow" id="ai-arrow">▼</span>
             </div>
             
             <div class="section-content" id="ai-section">
-                <!-- VIDEO 1 - Plantilla de video -->
-                <div class="video-item">
-                    <div class="video-info">
-                        <span class="video-icon">🤖</span>
-                        <div class="video-details">
-                            <h3 class="video-title">Machine Learning Explicado</h3>
-                            <p class="video-description">Introducción práctica al aprendizaje automático</p>
-                            <span class="video-link">https://www.youtube.com/watch?v=ejemplo3</span>
-                            <div class="video-stats">
-                                <span class="duration">⏱️ 3:15:30</span>
-                                <span class="views">👁️ 67K views</span>
-                            </div>
+                <!-- URL 1 - Plantilla de enlace -->
+                <div class="url-item">
+                    <div class="url-info">
+                        <span class="url-icon">🤖</span>
+                        <div class="url-details">
+                            <h3 class="url-title">OpenAI API Documentation</h3>
+                            <p class="url-description">Documentación oficial de la API de OpenAI</p>
+                            <span class="url-link">https://platform.openai.com/docs</span>
                         </div>
                     </div>
-                    <button class="watch-btn" onclick="openVideo('https://www.youtube.com/watch?v=ejemplo3')">
-                        Ver Video 🎬
+                    <button class="visit-btn" onclick="openUrl('https://platform.openai.com/docs')">
+                        Visitar 🚀
                     </button>
                 </div>
 
-                <!-- VIDEO 2 - Plantilla de video -->
-                <div class="video-item">
-                    <div class="video-info">
-                        <span class="video-icon">🧠</span>
-                        <div class="video-details">
-                            <h3 class="video-title">Redes Neuronales desde Cero</h3>
-                            <p class="video-description">Cómo construir una red neuronal paso a paso</p>
-                            <span class="video-link">https://www.youtube.com/watch?v=ejemplo4</span>
-                            <div class="video-stats">
-                                <span class="duration">⏱️ 2:45:15</span>
-                                <span class="views">👁️ 43K views</span>
-                            </div>
+                <!-- URL 2 - Plantilla de enlace -->
+                <div class="url-item">
+                    <div class="url-info">
+                        <span class="url-icon">🧠</span>
+                        <div class="url-details">
+                            <h3 class="url-title">TensorFlow Documentation</h3>
+                            <p class="url-description">Biblioteca de machine learning de código abierto</p>
+                            <span class="url-link">https://www.tensorflow.org/</span>
                         </div>
                     </div>
-                    <button class="watch-btn" onclick="openVideo('https://www.youtube.com/watch?v=ejemplo4')">
-                        Ver Video 🎬
+                    <button class="visit-btn" onclick="openUrl('https://www.tensorflow.org/')">
+                        Visitar 🚀
                     </button>
                 </div>
             </div>
         </div>
         <!-- ============ FIN PLANTILLA SECCIÓN IA ============ -->
 
+        <!-- ============ PLANTILLA DE SECCIÓN - APIS ============ -->
+        <!-- Para agregar más secciones, copia desde aquí hasta el comentario de cierre -->
+        <div class="repo-section">
+            <div class="section-header" onclick="toggleSection('api-section')">
+                <div class="header-left">
+                    <span class="folder-icon">📁</span>
+                    <h2 class="section-title">APIs y Servicios Web</h2>
+                    <span class="url-count">(2 recursos)</span>
+                </div>
+                <span class="toggle-arrow" id="api-arrow">▼</span>
+            </div>
+            
+            <div class="section-content" id="api-section">
+                <!-- URL 1 - Plantilla de enlace -->
+                <div class="url-item">
+                    <div class="url-info">
+                        <span class="url-icon">🔗</span>
+                        <div class="url-details">
+                            <h3 class="url-title">REST API Best Practices</h3>
+                            <p class="url-description">Guía completa para diseñar APIs REST eficientes</p>
+                            <span class="url-link">https://restfulapi.net/</span>
+                        </div>
+                    </div>
+                    <button class="visit-btn" onclick="openUrl('https://restfulapi.net/')">
+                        Visitar 🚀
+                    </button>
+                </div>
+
+                <!-- URL 2 - Plantilla de enlace -->
+                <div class="url-item">
+                    <div class="url-info">
+                        <span class="url-icon">📡</span>
+                        <div class="url-details">
+                            <h3 class="url-title">Postman Documentation</h3>
+                            <p class="url-description">Herramienta para testing y desarrollo de APIs</p>
+                            <span class="url-link">https://learning.postman.com/docs/</span>
+                        </div>
+                    </div>
+                    <button class="visit-btn" onclick="openUrl('https://learning.postman.com/docs/')">
+                        Visitar 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- ============ FIN PLANTILLA SECCIÓN APIS ============ -->
+
         <!-- ============ INSTRUCCIONES PARA AGREGAR MÁS SECCIONES ============ -->
         <!--
         PARA AGREGAR UNA NUEVA SECCIÓN:
         1. Copia toda la estructura desde "PLANTILLA DE SECCIÓN" hasta "FIN PLANTILLA SECCIÓN"
         2. Cambia los siguientes elementos:
-           - ID único para la sección (ej: 'webdev-section')
-           - ID único para la flecha (ej: 'webdev-arrow')
+           - ID único para la sección (ej: 'database-section')
+           - ID único para la flecha (ej: 'database-arrow')
            - Título de la sección
-           - Contador de videos
-           - Contenido de cada video (icono, título, descripción, enlace, duración, views)
+           - Contador de URLs
+           - Contenido de cada URL (icono, título, descripción, enlace)
            - Función toggleSection() con el nuevo ID
-        3. No olvides agregar el nuevo ID al array de secciones en videos.js
+        3. No olvides agregar el nuevo ID al array de secciones en repositorios.js
         -->
 
     </main>
 
     <!-- Footer informativo -->
-    <footer class="video-footer">
-        <p>Biblioteca de Videos | Última actualización: <span id="lastUpdate"></span></p>
+    <footer class="repo-footer">
+        <p>Panel de Repositorios | Última actualización: <span id="lastUpdate"></span></p>
     </footer>
 
     <!-- Scripts -->
-    <script src="js/videos.js"></script>
+    <script src="js/repositorios.js"></script>
     <script src="js/emojis.js"></script>
 </body>
 </html>
