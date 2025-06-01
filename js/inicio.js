@@ -7,6 +7,29 @@ const statsBtn = document.getElementById("statsBtn");
 const adminWelcome = document.getElementById("adminWelcome");
 const sessionTime = document.getElementById("sessionTime");
 
+document.addEventListener("DOMContentLoaded", function () {
+    const smokyText = document.getElementById("smokyText");
+    const smokeEffect = document.getElementById("smokeEffect");
+    const dashboard = document.getElementById("dashboardContent");
+
+    // Texto personalizado smoky
+    const mensaje = "BIENVENIDO VASH";
+
+    // Limpiar y construir texto con animaciones
+    mensaje.split('').forEach((letra, i) => {
+        const span = document.createElement('span');
+        span.textContent = letra;
+        span.style.animationDelay = `${3 + i * 0.1}s`;
+        smokyText.appendChild(span);
+    });
+
+    // Mostrar dashboard después del efecto smoky (≈8s)
+    setTimeout(() => {
+        smokeEffect.style.display = "none";
+        dashboard.style.display = "block";
+    }, 8000);
+});
+
 // Verificar autenticación al cargar la página
 function checkAuthentication() {
     const isAdmin = sessionStorage.getItem("isAdmin");
