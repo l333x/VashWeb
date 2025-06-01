@@ -1,0 +1,397 @@
+/* ============ VARIABLES DE COLOR NEON ROJO ============ */
+:root {
+    --color-primario: #ff0040;
+    --color-secundario: #ff3366;
+    --color-oscuro: #0a0a0a;
+    --color-texto: #ffffff;
+    --color-blanco: #f0f0f0;
+    --color-titulo: #ff0066;
+    --color-navbar: #1a1a1a;
+    --color-fondobeneficio: rgba(255, 0, 64, 0.1);
+    --color-hover: #ff1a4d;
+    --color-acento: #ff6b8a;
+}
+
+/* ============ RESET Y CONFIGURACIÓN BASE ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--color-oscuro) 0%, #1a0a0a 50%, var(--color-oscuro) 100%);
+    min-height: 100vh;
+    color: var(--color-texto);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ============ EFECTO DE FONDO ANIMADO ============ */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--color-fondobeneficio) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, var(--color-fondobeneficio) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, var(--color-fondobeneficio) 0%, transparent 50%);
+    animation: floatingBackground 20s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+@keyframes floatingBackground {
+    0% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+    100% { transform: translateY(-40px) rotate(180deg); opacity: 0.6; }
+}
+
+/* ============ HEADER PRINCIPAL ============ */
+.video-header {
+    background: rgba(26, 26, 26, 0.95);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--color-primario);
+    box-shadow: 0 2px 20px var(--color-primario);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============ BOTÓN HOME ============ */
+.home-btn {
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-btn:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 0 25px var(--color-secundario);
+    background: linear-gradient(45deg, var(--color-secundario), var(--color-primario));
+}
+
+/* ============ TÍTULO DE PÁGINA ============ */
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-titulo);
+    text-shadow: 
+        0 0 10px var(--color-titulo),
+        0 0 20px var(--color-titulo);
+    animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+    0% { text-shadow: 0 0 10px var(--color-titulo), 0 0 20px var(--color-titulo); }
+    100% { text-shadow: 0 0 15px var(--color-secundario), 0 0 25px var(--color-secundario); }
+}
+
+.user-info {
+    color: var(--color-blanco);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ============ CONTENEDOR PRINCIPAL ============ */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ============ SECCIONES DE VIDEOS ============ */
+.video-section {
+    background: rgba(26, 26, 26, 0.9);
+    border: 2px solid var(--color-primario);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 
+        0 5px 20px rgba(255, 0, 64, 0.3),
+        inset 0 0 20px rgba(255, 0, 64, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.video-section:hover {
+    border-color: var(--color-secundario);
+    box-shadow: 
+        0 8px 30px rgba(255, 0, 64, 0.4),
+        inset 0 0 30px rgba(255, 0, 64, 0.1);
+}
+
+/* ============ HEADER DE SECCIÓN ============ */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 0, 64, 0.2);
+}
+
+.section-header:hover {
+    background: rgba(255, 0, 64, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.folder-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px var(--color-primario));
+    animation: folderGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes folderGlow {
+    0% { filter: drop-shadow(0 0 10px var(--color-primario)); }
+    100% { filter: drop-shadow(0 0 15px var(--color-secundario)); }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--color-titulo);
+    text-shadow: 0 0 10px var(--color-titulo);
+}
+
+.video-count {
+    color: var(--color-blanco);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.toggle-arrow {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 5px var(--color-primario);
+}
+
+.toggle-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+/* ============ CONTENIDO DE SECCIÓN ============ */
+.section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.section-content.active {
+    max-height: 1000px;
+    padding: 20px 30px 30px;
+}
+
+/* ============ ELEMENTOS DE VIDEO ============ */
+.video-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 0, 64, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-item:hover {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+    transform: translateY(-2px);
+}
+
+.video-item:last-child {
+    margin-bottom: 0;
+}
+
+.video-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.video-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px var(--color-primario));
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.video-title {
+    color: var(--color-titulo);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--color-titulo);
+}
+
+.video-description {
+    color: var(--color-blanco);
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.video-link {
+    color: var(--color-primario);
+    font-size: 0.8rem;
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+/* ============ ESTADÍSTICAS DEL VIDEO ============ */
+.video-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.duration, .views {
+    color: var(--color-acento);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ============ BOTONES DE VIDEO ============ */
+.watch-btn {
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    color: var(--color-texto);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--color-primario);
+    position: relative;
+    overflow: hidden;
+}
+
+.watch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 25px var(--color-secundario);
+    background: linear-gradient(45deg, var(--color-secundario), var(--color-primario));
+}
+
+.watch-btn:active {
+    transform: translateY(0);
+}
+
+/* ============ FOOTER ============ */
+.video-footer {
+    background: rgba(26, 26, 26, 0.9);
+    border-top: 1px solid var(--color-primario);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    color: var(--color-blanco);
+    box-shadow: 0 -2px 10px rgba(255, 0, 64, 0.2);
+}
+
+/* ============ ANIMACIONES ============ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.video-section:nth-child(1) { animation-delay: 0.1s; }
+.video-section:nth-child(2) { animation-delay: 0.2s; }
+.video-section:nth-child(3) { animation-delay: 0.3s; }
+
+/* ============ EFECTOS PARA EMOJIS FLOTANTES ============ */
+.click-emoji {
+    position: absolute;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: rise 2s ease-out forwards;
+}
+
+@keyframes rise {
+    0% { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-100px); 
+        opacity: 0; 
+    }
+}
+
+/* ============ RESPONSIVIDAD ============ */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .video-item {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .video-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .section-header {
+        padding: 20px;
+    }
+    
+    .section-content.active {
+        padding: 15px 20px 25px;
+    }
+    
+    .video-stats {
+        justify-content: center;
+    }
+}
