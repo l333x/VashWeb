@@ -189,7 +189,7 @@ function setupEventListeners() {
     videosBtn.addEventListener("click", handleVideosClick);
     
     // Botones deshabilitados
-    configBtn.addEventListener("click", () => handleDisabledClick("Configuración"));
+    //configBtn.addEventListener("click", () => handleDisabledClick("Configuración"));
     statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
     
     // Event listener para prevenir cierre accidental de la ventana
@@ -288,3 +288,23 @@ function debugInfo() {
 
 // Exponer función de debug al objeto window para acceso desde consola
 window.debugInfo = debugInfo;
+
+// ============ VERSIÓN SIMPLE - AGREGAR AL FINAL DE inicio.js ============
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Navegación directa para repositorios
+    document.getElementById('repositoriosBtn').addEventListener('click', function() {
+        window.location.href = 'repositorios.html';
+    });
+    
+    // Navegación directa para videos
+    document.getElementById('videosBtn').addEventListener('click', function() {
+        window.location.href = 'videos.html';
+    });
+    
+    // Para configuración (cuando esté listo)
+    document.getElementById('configBtn').addEventListener('click', function() {
+    window.location.href = 'config.html';
+     });
+});
