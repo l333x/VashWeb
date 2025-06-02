@@ -61,14 +61,30 @@ body::before {
     z-index: 100;
 }
 
-/* Contenido del header */
 .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
 }
 
 /* Título del panel administrativo */
@@ -93,6 +109,8 @@ body::before {
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-left: auto;
+    margin-right: 20px; /* Agrega margen derecho para separar del borde */
 }
 
 /* Mensaje de bienvenida */
@@ -324,9 +342,18 @@ body::before {
         gap: 15px;
     }
     
+    .logo-container {
+        position: static;
+        transform: none;
+        order: 1; /* Logo primero */
+    }
+    
     .admin-info {
+        margin-left: 0;
+        margin-right: 0;
         flex-direction: column;
         gap: 10px;
+        order: 2; /* Bienvenido y botón después del logo */
     }
     
     .main-buttons-grid {
@@ -350,6 +377,7 @@ body::before {
     .sections-title {
         font-size: 1.8rem;
     }
+    
 }
 
 /* Animaciones adicionales para mejorar la experiencia */
@@ -441,4 +469,5 @@ body::before {
         opacity: 0;
     }
 }
+
 
