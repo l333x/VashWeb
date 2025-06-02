@@ -17,7 +17,7 @@ document.addEventListener('click', function(e) {
 function createFloatingEmoji() {
     const emoji = document.createElement('div');
     emoji.className = 'floating-emoji';
-    emoji.innerHTML = '👻 // Cambia aquí por el emoji que desees
+    emoji.innerHTML = '👻'// Cambia aquí por el emoji que desees
     emoji.style.left = Math.random() * window.innerWidth + 'px';
     emoji.style.animationDuration = (Math.random() * 3 + 3) + 's';
     emoji.style.animationDelay = Math.random() * 2 + 's';
