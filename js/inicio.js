@@ -308,3 +308,4 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = 'config.html';
      });
 });
+//hola
