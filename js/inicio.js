@@ -188,9 +188,10 @@ function setupEventListeners() {
     repositoriosBtn.addEventListener("click", handleRepositoriosClick);
     videosBtn.addEventListener("click", handleVideosClick);
     
-    // Botones deshabilitados
-    //configBtn.addEventListener("click", () => handleDisabledClick("Configuración"));
-    //statsBtn.addEventListener("click", () => handleDisabledClick("Estadísticas"));
+    // Para estadísticas/comunidad
+document.getElementById('statsBtn').addEventListener('click', function() {
+    window.location.href = 'comunidad.html';
+});
     
     // Event listener para prevenir cierre accidental de la ventana
     window.addEventListener("beforeunload", function(event) {
