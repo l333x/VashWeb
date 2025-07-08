@@ -1,6 +1,6 @@
 // Configuración de números de WhatsApp y mensajes
 const whatsappConfig = {
-    phoneNumber: '593995866394', // Número de WhatsApp sin el símbolo +
+    phoneNumber: '593960145588', // Número de WhatsApp sin el símbolo +
     messages: {
         foro: 'Hola! Me gustaría unirme al foro comunitario y participar en las discusiones.',
         compras: 'Hola! Estoy interesado en realizar una compra. ¿Podrían ayudarme con el catálogo de productos?'
