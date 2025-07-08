@@ -1,1 +1,110 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad - Foro y Compras</title>
+    <link rel="stylesheet" href="css/comunidad.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="admin-title">COMUNIDAD</div>
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo" class="header-logo">
+            </div>
+            <div class="admin-info">
+                <span id="adminWelcome">Bienvenido a la Comunidad</span>
+                <button class="logout-btn" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="dashboard-container">
+        <h1 class="sections-title">FORO Y COMPRAS EN LÍNEA</h1>
+        
+        <!-- Grid de botones principales -->
+        <div class="main-buttons-grid">
+            
+            <!-- Tarjeta del Foro -->
+            <div class="module-card">
+                <div class="card-icon">💬</div>
+                <h3 class="card-title">FORO COMUNITARIO</h3>
+                <p class="card-description">
+                    Únete a nuestra comunidad activa. Comparte experiencias, resuelve dudas, 
+                    conecta con otros usuarios y participa en discusiones sobre nuestros productos y servicios.
+                </p>
+                <button class="module-btn whatsapp-btn" data-type="foro">
+                    <span class="btn-glow"></span>
+                    <i class="fab fa-whatsapp"></i>
+                    ACCEDER AL FORO
+                </button>
+            </div>
+
+            <!-- Tarjeta de Compras -->
+            <div class="module-card">
+                <div class="card-icon">🛒</div>
+                <h3 class="card-title">COMPRAS EN LÍNEA</h3>
+                <p class="card-description">
+                    Explora nuestro catálogo completo de productos, realiza pedidos personalizados, 
+                    consulta precios y recibe atención personalizada para todas tus compras.
+                </p>
+                <button class="module-btn whatsapp-btn" data-type="compras">
+                    <span class="btn-glow"></span>
+                    <i class="fab fa-whatsapp"></i>
+                    REALIZAR COMPRA
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Información adicional -->
+        <div class="session-info">
+            <p><strong>Atención personalizada via WhatsApp</strong></p>
+            <p>Horario de atención: Lunes a Viernes 8:00 AM - 6:00 PM</p>
+            <p class="status-active">¡Estamos en línea!</p>
+        </div>
+
+        <!-- Sección de beneficios -->
+        <div class="benefits-section">
+            <h2 class="benefits-title">¿Por qué elegir nuestra comunidad?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h4>Comunidad Activa</h4>
+                    <p>Miles de usuarios compartiendo experiencias diariamente</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shipping-fast benefit-icon"></i>
+                    <h4>Envíos Rápidos</h4>
+                    <p>Entrega express en toda la ciudad</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset benefit-icon"></i>
+                    <h4>Soporte 24/7</h4>
+                    <p>Atención personalizada cuando la necesites</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt benefit-icon"></i>
+                    <h4>Compra Segura</h4>
+                    <p>Transacciones protegidas y confiables</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="admin-footer">
+        <p>&copy; 2024 Comunidad Online. Todos los derechos reservados.</p>
+        <p>Conectando personas, facilitando compras</p>
+    </footer>
+
+    <script src="js/comunidad.js"></script>
+</body>
+</html>
