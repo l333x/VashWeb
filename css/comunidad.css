@@ -483,3 +483,192 @@ body::before {
     50% { box-shadow: 0 0 30px rgba(37, 211, 102, 0.8); }
     100% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); }
 }
+
+/* ===== EFECTO DE FONDO ANIMADO ===== */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:  
+        radial-gradient(circle at 20% 30%, var(--color-fondobeneficio) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, var(--color-fondobeneficio) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, var(--color-fondobeneficio) 0%, transparent 50%);
+    animation: floatingBackground 20s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+.video-header {
+    background: rgba(26, 26, 26, 0.95);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--color-primario);
+    box-shadow: 0 2px 20px var(--color-primario);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-btn {
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-texto);
+}
+
+.home-btn:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 0 25px var(--color-secundario);
+    background: linear-gradient(45deg, var(--color-secundario), var(--color-primario));
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-titulo);
+    text-shadow:  
+        0 0 10px var(--color-titulo),
+        0 0 20px var(--color-titulo);
+    animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+
+
+.user-info {
+    color: var(--color-blanco);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.foro-section {
+    margin-top: 50px;
+    background: rgba(26, 26, 26, 0.85);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--color-primario);
+}
+
+.foro-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--color-titulo);
+    text-align: center;
+    text-shadow: 0 0 10px var(--color-titulo);
+}
+
+.foro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.foro-form textarea {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 10px;
+    resize: vertical;
+    background: #1c1c1c;
+    border: 1px solid var(--color-primario);
+    color: var(--color-texto);
+    height: 100px;
+}
+
+.foro-form input[type=\"file\"] {
+    color: var(--color-blanco);
+}
+
+.foro-form button {
+    align-self: flex-end;
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: var(--color-texto);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--color-secundario);
+}
+
+.foro-feed .foro-post {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--color-primario);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: var(--color-blanco);
+    word-wrap: break-word;
+}
+
+.foro-post img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.foro-post {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--color-primario);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: var(--color-blanco);
+}
+
+.foro-post img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.comment-form {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.comment-input {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--color-secundario);
+    background: #1a1a1a;
+    color: var(--color-texto);
+}
+
+.comment-form button {
+    padding: 8px 15px;
+    border: none;
+    background: var(--color-primario);
+    color: var(--color-texto);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.foro-comment {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--color-blanco);
+    padding-left: 10px;
+    border-left: 2px solid var(--color-secundario);
+}
