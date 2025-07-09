@@ -83,6 +83,7 @@ function showSuccessNotification(message) {
         font-weight: bold;
     `;
     
+
     // Añadir animación si no existe
     if (!document.querySelector('#notificationAnimation')) {
         const style = document.createElement('style');
@@ -436,3 +437,43 @@ window.ComunidadApp = {
     isBusinessHours,
     updateAvailabilityStatus
 };
+
+    function goHome() {
+    window.location.href = "inicio.html"; // o cambia la ruta al archivo que consideres
+}
+
+function initializeForo() {
+    const foroForm = document.getElementById('foroForm');
+    const foroInput = document.getElementById('foroInput');
+    const foroImage = document.getElementById('foroImage');
+    const foroFeed = document.getElementById('foroFeed');
+
+    foroForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const postText = foroInput.value.trim();
+        const file = foroImage.files[0];
+
+        if (!postText && !file) return;
+
+        const post = document.createElement('div');
+        post.classList.add('foro-post');
+        post.innerHTML = `<p>${postText}</p>`;
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = document.createElement('img');
+                img.src = event.target.result;
+                post.appendChild(img);
+                foroFeed.prepend(post);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            foroFeed.prepend(post);
+        }
+
+        foroForm.reset();
+    });
+}
+
